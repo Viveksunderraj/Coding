@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+char a[102];
+int i,j=0,k=0,close[102],open[102],l;
+scanf("%s",a);
+for(i=0;a[i];i++)
+{
+    if(a[i]=='(')
+    {
+        open[k]=i;
+        k++;
+    }
+    else if(a[i]==')')
+    {
+        close[j]=i;
+        j++;
+    }
+}
+
+for(i=0;i<k;i++)
+{
+    for(l=0;l<j;l++)
+    {
+        if(open[i]<close[l])
+        {
+            open[i]=-1;
+            close[l]=-1;
+            break;
+        }
+    }
+}
+
+for(i=0;a[i];i++)
+{
+    for(l=0;l<k;l++)
+    {
+    if(i==open[l])
+    {
+    a[i]='1';
+    
+    }
+    }
+}
+for(i=0;a[i];i++)
+{
+    for(l=0;l<j;l++)
+    {
+    if(i==close[l])
+    {
+    a[i]='1';
+    }
+}
+}
+for(i=0;a[i];i++)
+{
+    if(a[i]!='1')
+    printf("%c",a[i]);
+}
+
+}
